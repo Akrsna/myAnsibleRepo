@@ -3,10 +3,16 @@
   become: yes
  
   tasks:
-   - name: i wanna install tree
-     apt:
-      name: tree
+   - name: i wanna install httpd on Amazon Linux
+     yum:
+      name: httpd
       state: present
+     when: ansible_os_family=="RedHat"
+   - name : start my webserver
+     service: 
+       name: httpd
+       state: started
+     when: ansible_os_family=="RedHat"
    - name: install apache webserver on ubuntu
      apt:
       name: apache2
