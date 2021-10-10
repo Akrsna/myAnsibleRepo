@@ -1,0 +1,5 @@
+---
+- hosts: mytomcatserver
+  become: yes
+  roles:
+    - {role: mytomcat8onUbuntu16, when: ansible_os_family== "Debian"}
